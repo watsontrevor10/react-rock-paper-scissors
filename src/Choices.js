@@ -5,11 +5,11 @@ class Choices extends React.Component {
   state = { id: "", name: "" }
   
   render() {
-    const { name, clickChoice } = this.props
+    const { name, id, clickChoice } = this.props
     return (
       <Card>
       <Card.Content textAlign="center" >
-        <Button onClick={() => clickChoice(name)}>{name.toUpperCase()}</Button>
+        <Button onClick={() => clickChoice(id)}>{name.toUpperCase()}</Button>
       </Card.Content>
     </Card>
     )
