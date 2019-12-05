@@ -55,27 +55,30 @@ class App extends React.Component {
     }
   }
 
+  // Logic displaying win and loss
   winLogic = () => {
     const { computerChoice, userChoice } = this.state
-    // if (computerChoice === 1 && userChoice === 2)
-    //   return "You Win"
-    switch(userChoice && computerChoice) {
-      case 1 &&  2:
-        return "You Lose" 
-      case 1 && 3:
-        return "You Win" 
-      case  2 && 3:
-        return "You Lose"
-      case  2 && 1:
-        return "You Win"
-      case  3 && 1:
-        return "You Lose"
-      case  3 && 2:
-        return "You Win"
-      default :
-        return "TIE"
-    }
     
+    if (userChoice === computerChoice) {
+      return "TIE"
+    } else {
+      switch(userChoice && computerChoice) {
+        case 1 &&  2:
+          return "You Lose" 
+        case 1 && 3:
+          return "You Win" 
+        case  2 && 3:
+          return "You Lose"
+        case  2 && 1:
+          return "You Win"
+        case  3 && 1:
+          return "You Lose"
+        case  3 && 2:
+          return "You Win"
+        default :
+          return null
+      }
+    }
   }
   
 
