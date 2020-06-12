@@ -11,36 +11,36 @@ const Home = () => {
   const [ties, setTies] = useState(0);
 
   const handleSubmit = (e) => {
+    // Generates random number and assigns that as computer choice
     let indexChoice = Math.floor(Math.random() * 3);
     setCompChoice(indexChoice);
+    // Grabs index number from user choice
     setUserChoice(e);
-    incement()
+    
+    // Increment win/ties/losses by 1
+    if (e === indexChoice) {
+      setTies(ties + 1);
+    } else if ((e - indexChoice + 3) % 3 === 1) {
+      setWins(wins + 1);
+    } else {
+      setLosses(losses + 1);
+    }
   };
 
   useEffect(() => {
-    if (userChoice === compChoice && userChoice != null) {
+    if (userChoice === compChoice && userChoice !== null) {
       setWinPrompt("Tie");
     } else if (userChoice === null) {
       setWinPrompt("Choose");
-    } else if ((userChoice - compChoice + 3) % 3 == 1) {
+    } else if ((userChoice - compChoice + 3) % 3 === 1) {
       setWinPrompt("You Win");
     } else {
       setWinPrompt("You Lose");
     }
-  
-  });
-  
-  const incement = () => {
-    if (winPrompt == "Choose") {
 
-    } else if (winPrompt == "You Lose") {
-      setLosses(losses + 1);
-    } else if (winPrompt == "You Win") {
-      setWins(wins + 1) 
-    } else {
-      setTies(ties + 1);
-    }
-  }
+    console.log("useEffect " + winPrompt)
+  });
+
 
   return (
     <>
