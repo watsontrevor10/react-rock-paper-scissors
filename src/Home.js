@@ -17,6 +17,7 @@ const Home = () => {
   let [losses, setLosses] = useState(0);
   const [ties, setTies] = useState(0);
 
+  // executes whenever a button is clicked
   const handleSubmit = (e) => {
     // Generates random number and assigns that as computer choice
     let indexChoice = Math.floor(Math.random() * 3);
@@ -34,6 +35,7 @@ const Home = () => {
     }
   };
 
+  // Sets the win/tie/lose prompt every time user clicks an option
   useEffect(() => {
     if (userChoice === compChoice && userChoice !== null) {
       setWinPrompt("Tie");
@@ -48,9 +50,7 @@ const Home = () => {
 
   return (
     <>
-      <div
-        style={{ padding: "15px", margin: "10px, auto", textAlign: "center" }}
-      >
+      <div style={{ padding: "20px", marginTop: "20px", textAlign: "center" }}>
         <Header as="h1">Rock Paper Scissors</Header>
       </div>
 
@@ -117,6 +117,19 @@ const Home = () => {
           </Statistic>
         </Card>
       </Card.Group>
+
+      <div style={{ paddingTop: "10em", textAlign: "center"}}>
+        <h3>By</h3>
+        <h3>
+          <a
+            href="https://trevorwatson.me/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Trevor Watson
+          </a>
+        </h3>
+      </div>
     </>
   );
 };
