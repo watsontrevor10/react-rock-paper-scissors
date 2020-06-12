@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Header } from "semantic-ui-react";
+import {
+  Card,
+  Button,
+  Header,
+  Statistic,
+  Divider,
+  Icon,
+} from "semantic-ui-react";
 
 const Home = () => {
   const choices = ["Rock", "Paper", "Scissors"];
@@ -16,7 +23,7 @@ const Home = () => {
     setCompChoice(indexChoice);
     // Grabs index number from user choice
     setUserChoice(e);
-    
+
     // Increment win/ties/losses by 1
     if (e === indexChoice) {
       setTies(ties + 1);
@@ -37,10 +44,7 @@ const Home = () => {
     } else {
       setWinPrompt("You Lose");
     }
-
-    console.log("useEffect " + winPrompt)
   });
-
 
   return (
     <>
@@ -49,28 +53,73 @@ const Home = () => {
       >
         <Header as="h1">Rock Paper Scissors</Header>
       </div>
-      <Card>
-        <Button onClick={() => handleSubmit(0)}>Rock</Button>
-      </Card>
-      <Card>
-        <Button onClick={() => handleSubmit(1)}>Paper</Button>
-      </Card>
-      <Card>
-        <Button onClick={() => handleSubmit(2)}>Scissors</Button>
-      </Card>
-      <h3>{winPrompt}</h3>
-      <h3>Your Choice</h3>
-      <Card>
-        {userChoice != null ? choices[userChoice] : "Select an Option"}
-      </Card>
-      <h3>Computer Choice</h3>
-      <Card>
-        {compChoice != null ? choices[compChoice] : "Select an Option"}
-      </Card>
-      <h3>Record</h3>
-      <Card>
-        {wins} - {ties} - {losses}
-      </Card>
+      <Card.Group centered>
+        <Card>
+          <Button onClick={() => handleSubmit(0)}>
+            <Icon name="hand rock" color="black" size="huge" />
+          </Button>
+        </Card>
+        <Card>
+          <Button onClick={() => handleSubmit(1)}>
+            <Icon name="hand paper" color="black" size="huge" />
+          </Button>
+        </Card>
+        <Card>
+          <Button onClick={() => handleSubmit(2)}>
+            <Icon name="hand scissors" color="black" size="huge" />
+          </Button>
+        </Card>
+      </Card.Group>
+      <Header as="h2" textAlign="center">
+        {winPrompt}
+      </Header>
+      <Card.Group centered>
+        <Card.Content textAlign="center">
+          {/* <Card.Header as="h3" textAlign="center">
+            Your Choice
+          </Card.Header> */}
+          <Card>
+            <Statistic>
+              <Statistic.Label>
+                {userChoice != null ? choices[userChoice] : "Your Choice"}
+              </Statistic.Label>
+            </Statistic>
+          </Card>
+        </Card.Content>
+        <Card.Content textAlign="center">
+          {/* <Card.Header as="h3" textAlign="center">
+            Computer Choice
+          </Card.Header> */}
+          <Card>
+            <Statistic>
+              <Statistic.Label>
+                {compChoice != null ? choices[compChoice] : "Computer Choice"}
+              </Statistic.Label>
+            </Statistic>
+          </Card>
+        </Card.Content>
+      </Card.Group>
+      <Divider horizontal></Divider>
+      <Card.Group centered>
+        <Card centered color="green">
+          <Statistic>
+            <Statistic.Label>Wins</Statistic.Label>
+            <Statistic.Value>{wins}</Statistic.Value>
+          </Statistic>
+        </Card>
+        <Card centered color="yellow">
+          <Statistic>
+            <Statistic.Label>Ties</Statistic.Label>
+            <Statistic.Value>{ties}</Statistic.Value>
+          </Statistic>
+        </Card>
+        <Card centered color="red">
+          <Statistic>
+            <Statistic.Label>Losses</Statistic.Label>
+            <Statistic.Value>{losses}</Statistic.Value>
+          </Statistic>
+        </Card>
+      </Card.Group>
     </>
   );
 };
