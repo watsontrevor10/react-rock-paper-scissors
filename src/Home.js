@@ -78,19 +78,27 @@ const Home = () => {
       <div style={{ padding: "15px", marginBottom: "15px" }}>
         <Card.Group centered items="raised">
           <Card>
-            <Header block as="h2" textAlign="center" size="huge">
+            <div style={{ margin: "auto", padding: "10px" }}>
+              <Icon name="user" size="huge" />
+            </div>
+            <Card.Header as="h2" textAlign="center" color="blue">
               {userChoice != null ? choices[userChoice] : "Your Choice"}
-            </Header>
+            </Card.Header>
           </Card>
           <Card>
-            <Header block as="h2" textAlign="center" size="huge">
-              {winPrompt}
-            </Header>
+            <div style={{ margin: "auto" }}>
+              <Card.Header as="h1" textAlign="center">
+                {winPrompt}
+              </Card.Header>
+            </div>
           </Card>
           <Card>
-            <Header block as="h2" textAlign="center" size="huge">
+            <div style={{ margin: "auto", padding: "10px" }}>
+              <Icon name="computer" size="huge" />
+            </div>
+            <Card.Header as="h2" textAlign="center">
               {compChoice != null ? choices[compChoice] : "Computer Choice"}
-            </Header>
+            </Card.Header>
           </Card>
         </Card.Group>
         <Divider horizontal></Divider>
@@ -118,7 +126,7 @@ const Home = () => {
         </Card>
       </Card.Group>
 
-      <div style={{ paddingTop: "10em", textAlign: "center"}}>
+      <div style={{ paddingTop: "10em", textAlign: "center" }}>
         <h3>By</h3>
         <h3>
           <a
