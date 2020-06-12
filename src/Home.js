@@ -53,53 +53,50 @@ const Home = () => {
       >
         <Header as="h1">Rock Paper Scissors</Header>
       </div>
-      <Card.Group centered>
-        <Card>
-          <Button onClick={() => handleSubmit(0)}>
-            <Icon name="hand rock" color="black" size="huge" />
-          </Button>
-        </Card>
-        <Card>
-          <Button onClick={() => handleSubmit(1)}>
-            <Icon name="hand paper" color="black" size="huge" />
-          </Button>
-        </Card>
-        <Card>
-          <Button onClick={() => handleSubmit(2)}>
-            <Icon name="hand scissors" color="black" size="huge" />
-          </Button>
-        </Card>
-      </Card.Group>
-      <Header as="h2" textAlign="center">
-        {winPrompt}
-      </Header>
-      <Card.Group centered>
-        <Card.Content textAlign="center">
-          {/* <Card.Header as="h3" textAlign="center">
-            Your Choice
-          </Card.Header> */}
+
+      <div style={{ padding: "20px", marginBottom: "20px" }}>
+        <Card.Group centered items="raised">
           <Card>
-            <Statistic>
-              <Statistic.Label>
-                {userChoice != null ? choices[userChoice] : "Your Choice"}
-              </Statistic.Label>
-            </Statistic>
+            <Button onClick={() => handleSubmit(0)}>
+              <Icon name="hand rock" color="black" size="huge" />
+            </Button>
           </Card>
-        </Card.Content>
-        <Card.Content textAlign="center">
-          {/* <Card.Header as="h3" textAlign="center">
-            Computer Choice
-          </Card.Header> */}
           <Card>
-            <Statistic>
-              <Statistic.Label>
-                {compChoice != null ? choices[compChoice] : "Computer Choice"}
-              </Statistic.Label>
-            </Statistic>
+            <Button onClick={() => handleSubmit(1)}>
+              <Icon name="hand paper" color="black" size="huge" />
+            </Button>
           </Card>
-        </Card.Content>
-      </Card.Group>
-      <Divider horizontal></Divider>
+          <Card>
+            <Button onClick={() => handleSubmit(2)}>
+              <Icon name="hand scissors" color="black" size="huge" />
+            </Button>
+          </Card>
+        </Card.Group>
+      </div>
+
+      {/* Displays the winner and the choices */}
+      <div style={{ padding: "15px", marginBottom: "15px" }}>
+        <Card.Group centered items="raised">
+          <Card>
+            <Header block as="h2" textAlign="center" size="huge">
+              {userChoice != null ? choices[userChoice] : "Your Choice"}
+            </Header>
+          </Card>
+          <Card>
+            <Header block as="h2" textAlign="center" size="huge">
+              {winPrompt}
+            </Header>
+          </Card>
+          <Card>
+            <Header block as="h2" textAlign="center" size="huge">
+              {compChoice != null ? choices[compChoice] : "Computer Choice"}
+            </Header>
+          </Card>
+        </Card.Group>
+        <Divider horizontal></Divider>
+      </div>
+
+      {/* Win/Tie/Lose cards */}
       <Card.Group centered>
         <Card centered color="green">
           <Statistic>
